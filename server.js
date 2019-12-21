@@ -1,9 +1,10 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
-const dotenv = require("./dotenv");
-//引入env 配置文件
-dotenv.config();
+
+//初始化env配置文件
+require("./dotenv").config();
+
 
 http.createServer((req,res)=>{
     let {pathname} = url.parse(req.url,true);
@@ -12,6 +13,9 @@ http.createServer((req,res)=>{
         res.end("listen port 3000");
     }
 
+    if (pathname === ""){
+        showFile()
+    }
 }).listen(process.env.LISTEN_PORT);
 
 /**
@@ -43,3 +47,5 @@ function showFile(filename,fileType,res) {
         })
     })
 }
+
+
