@@ -13,7 +13,7 @@ http.createServer((req,res)=>{
         res.end("listen port 3000");
     }
 
-    if (pathname === ""){
+    if (pathname === "/learn"){
         showFile()
     }
 }).listen(process.env.LISTEN_PORT);
